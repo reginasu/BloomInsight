@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precision Insights. Blooming Performance. | 社群廣告成效診斷與預算最佳化專案</title>
+    <!-- FontAwesome 圖示庫 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google 字體：Inter, Noto Sans TC, Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            --bloom-pink: #ec4899;
+            --bloom-gradient: linear-gradient(135deg, #f43f5e 0%, #ec4899 50%, #8b5cf6 100%);
+            --accent: #10b981;
+            --accent-gradient: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+            --secondary: #0f172a;
+            --bg-light: #f8fafc;
+            --card-bg: rgba(255, 255, 255, 0.92);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.75;
+            overflow-x: hidden;
+        }
+
+        /* Hero 頂部主視覺區 - 融入 Slogan 與光影盛開花卉背景 */
+        header {
+            position: relative;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(30, 41, 59, 0.92) 100%), 
+                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            color: white;
+            padding: 100px 20px 130px;
+            text-align: center;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(to top, var(--bg-light), transparent);
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(244, 63, 94, 0.15);
+            color: #fb7185;
+            border: 1px solid rgba(251, 113, 133, 0.3);
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            backdrop-filter: blur(12px);
+        }
+
+        .slogan {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            background: var(--bloom-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(236, 72, 153, 0.2);
+        }
+
+        header h1 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #cbd5e1;
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            font-size: 1.15rem;
+            color: #94a3b8;
+            margin-bottom: 30px;
+            font-weight: 400;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: -60px auto 80px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 卡片設計與玻璃擬態 */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 45px;
+            margin-bottom: 35px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 35px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 18px;
+        }
+
+        .icon-wrapper {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            background: var(--bloom-gradient);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 8px 18px -4px rgba(236, 72, 153, 0.4);
+        }
+
+        .card-header h2 {
+            font-size: 1.65rem;
+            color: var(--secondary);
+            font-weight: 800;
+        }
+
+        /* 雙欄圖文排版 */
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .img-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .img-container:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 商業問題 3 欄式卡片 */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .problem-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--bloom-gradient);
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            border-color: #f472b6;
+            box-shadow: 0 14px 24px -5px rgba(236, 72, 153, 0.15);
+        }
+
+        .problem-icon {
+            font-size: 1.75rem;
+            color: var(--bloom-pink);
+            margin-bottom: 16px;
+        }
+
+        .problem-card h3 {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .problem-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* STAR 4 步卡片設計 */
+        .star-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .star-box {
+            background: #ffffff;
+            padding: 28px 24px;
+            border-radius: 18px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+
+        .star-badge {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .star-box:nth-child(1) .star-badge { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+        .star-box:nth-child(2) .star-badge { background: linear-gradient(135deg, #a855f7, #9333ea); }
+        .star-box:nth-child(3) .star-badge { background: linear-gradient(135deg, #ec4899, #db2777); }
+        .star-box:nth-child(4) .star-badge { background: linear-gradient(135deg, #10b981, #059669); }
+
+        .star-title {
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .star-desc {
+            font-size: 0.93rem;
+            color: var(--text-main);
+        }
+
+        /* 成效盛開 Banner */
+        .highlight-banner {
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+            border: 1px solid #fbcfe8;
+            border-radius: 18px;
+            padding: 28px 32px;
+            margin-top: 35px;
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            box-shadow: 0 10px 20px -5px rgba(236, 72, 153, 0.12);
+        }
+
+        .highlight-banner i {
+            font-size: 2.4rem;
+            color: var(--bloom-pink);
+        }
+
+        .highlight-text {
+            color: #831843;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .highlight-text strong {
+            color: #9d174d;
+            font-weight: 800;
+        }
+
+        footer {
+            text-align: center;
+            padding: 45px;
+            background: var(--secondary);
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-top: 70px;
+        }
+
+        @media (max-width: 868px) {
+            .slogan { font-size: 2.2rem; }
+            header h1 { font-size: 1.3rem; }
+            .split-layout { grid-template-columns: 1fr; }
+            .card { padding: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Hero Section (Slogan 主標題) -->
+    <header>
+        <div class="header-content">
+            <div class="badge">
+                <i class="fa-solid fa-seedling"></i> AdInsight & Performance Analytics
+            </div>
+            <!-- 主 Slogan 展示 -->
+            <div class="slogan">Precision Insights.<br>Blooming Performance.</div>
+            <h1>社群廣告成效診斷與預算最佳化專案</h1>
+            <p>透過精準的 Power BI 與 DAX 數據分析，拆解受眾漏斗與獲客成本 (CPA)，讓行銷投資轉化為盛開的 ROAS 成效！</p>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- 1. 社群媒體現況介紹 (圖文並茂) -->
+        <section class="card">
+            <div class="card-header">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <h2>社群媒體廣告現況與挑戰</h2>
+            </div>
+            
+            <div class="split-layout">
+                <div>
+                    <p style="margin-bottom: 16px;">隨著各大社群媒體（Meta、TikTok、Instagram 等）演算法的快速迭代與隱私權政策調校，傳統「廣灑預算」的投放模式早已失效。現今數位行銷面臨以下三大關鍵挑戰：</p>
+                    
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 14px;">
+                        <li style="display: flex; gap: 12px; align-items: flex-start;">
+                            <i class="fa-solid fa-circle-arrow-right" style="color: var(--bloom-pink); margin-top: 4px;"></i>
+                            <span><strong>競價成本（CPC/CPA）飆升：</strong> 受眾注意力碎片化，流量競價日益激烈，導致企業獲客成本持續攀升。</span>
+                        </li>
+                        <li style="display: flex; gap: 12px; align-items: flex-start;">
+                            <i class="fa-solid fa-circle-arrow-right" style="color: var(--bloom-pink); margin-top: 4px;"></i>
+                            <span><strong>流量「點擊多、轉換少」：</strong> 廣告文案雖吸引點擊，但受眾若非精準目標群，將產生大量的無效轉換流失。</span>
+                        </li>
+                        <li style="display: flex; gap: 12px; align-items: flex-start;">
+                            <i class="fa-solid fa-circle-arrow-right" style="color: var(--bloom-pink); margin-top: 4px;"></i>
+                            <span><strong>預算配置缺乏數據佐證：</strong> 多數行銷決策仍依賴主觀經驗，缺乏跨受眾與素材維度的動態 ROI 評估模型。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 替換為盛開數據成長意象的視覺圖 -->
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="數據分析儀表板與成效圖表">
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 研究三大商業問題的想法與用意 -->
+        <section class="card">
+            <div class="card-header">
+                <div class="icon-wrapper" style="background: var(--accent-gradient);">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <h2>研究三大商業問題的想法與用意</h2>
+            </div>
+            
+            <p>為了打破無效投放的惡性循環，本專案聚焦於以下三個核心商業問題，作為數據診斷與預算重配的依據：</p>
+            
+            <div class="grid-3">
+                <div class="problem-card">
+                    <i class="fa-solid fa-filter-circle-dollar problem-icon"></i>
+                    <h3>1. 受眾流失漏斗 (Funnel Optimization)</h3>
+                    <p><strong>用意：</strong> 剖析「曝光 <i class="fa-solid fa-angle-right"></i> 點擊 <i class="fa-solid fa-angle-right"></i> 轉換」的關卡流失率，釐清受眾是點擊前不感興趣（CTR 低），還是點擊後無購買意願（CVR 低），以精準優化投放策略。</p>
+                </div>
+
+                <div class="problem-card">
+                    <i class="fa-solid fa-vial-circle-check problem-icon"></i>
+                    <h3>2. 素材與版位 A/B Testing 評估</h3>
+                    <p><strong>用意：</strong> 比較影片（Video）、圖片（Image）、輪播（Carousel）等不同廣告形式的 CPC 與 CPA 表現，識別出「高成本、低回報」的劣質素材，停止預算浪費。</p>
+                </div>
+
+                <div class="problem-card">
+                    <i class="fa-solid fa-bullseye problem-icon"></i>
+                    <h3>3. 受眾興趣與競價效率 (Targeting)</h3>
+                    <p><strong>用意：</strong> 交叉分析受眾畫像（年齡、性別）與興趣標籤（Interests），定位出高投報率（ROAS > 5）的藍海黃金受眾群，實現預算極大化效益。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 專業能力與 STAR 架構展示 -->
+        <section class="card">
+            <div class="card-header">
+                <div class="icon-wrapper" style="background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+                <h2>專案實作與核心能力 (STAR 架構)</h2>
+            </div>
+
+            <p style="margin-bottom: 22px; font-size: 1.05rem;">
+                <span style="background: #fdf2f8; color: #db2777; padding: 6px 14px; border-radius: 8px; font-weight: 700;">
+                    <i class="fa-solid fa-microchip"></i> 核心專長
+                </span>
+                <strong style="margin-left: 10px; color: var(--secondary);">社群廣告成效診斷與預算最佳化專案 (Power BI / DAX)</strong>
+            </p>
+            
+            <div class="star-grid">
+                <div class="star-box">
+                    <div class="star-badge">S</div>
+                    <div class="star-title">Situation（背景）</div>
+                    <div class="star-desc">為優化社群媒體廣告投放成效，針對多檔社群廣告活動數據進行探索性分析與轉化診斷。</div>
+                </div>
+
+                <div class="star-box">
+                    <div class="star-badge">T</div>
+                    <div class="star-title">Task（任務）</div>
+                    <div class="star-desc">評估受眾流失點、素材 ROI 及獲客成本（CPA），提供預算重新配置依據。</div>
+                </div>
+
+                <div class="star-box">
+                    <div class="star-badge">A</div>
+                    <div class="star-title">Action（行動）</div>
+                    <div class="star-desc">運用 DAX 撰寫動態加權指標（ROAS、CPA、CVR），建立 2 頁式 Power BI 動態儀表板，並透過散佈圖與矩陣熱力圖定位黃金受眾與高效素材組合。</div>
+                </div>
+
+                <div class="star-box">
+                    <div class="star-badge">R</div>
+                    <div class="star-title">Result（成果）</div>
+                    <div class="star-desc">成功產出可互動的廣告戰情室，識別出高成本無效受眾，並找出高投報率（ROAS > 5）的素材投放策略。</div>
+                </div>
+            </div>
+
+            <!-- 成效亮點 Banner -->
+            <div class="highlight-banner">
+                <i class="fa-solid fa-flower-tulip"></i>
+                <div class="highlight-text">
+                    <strong>Precision Insights. Blooming Performance.</strong><br>
+                    透過 Power BI 動態對比與散佈圖診斷，成功協助團隊精準識別並淘汰高 CPA 的無效受眾，鎖定 <strong>ROAS > 5</strong> 的黃金素材組合，實現數據驅動（Data-Driven）的行銷預算極致綻放！
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Precision Insights. Blooming Performance. | Power BI & Marketing Analytics Portfolio</p>
+    </footer>
+
+</body>
+</html>
