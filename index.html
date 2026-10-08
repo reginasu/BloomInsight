@@ -90,6 +90,7 @@
             margin-bottom: 16px;
             letter-spacing: -1px;
             background: var(--bloom-gradient);
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 10px 30px rgba(236, 72, 153, 0.2);
@@ -356,6 +357,25 @@
     </header>
 
     <div class="container">
+        <section class="card">
+            <div class="card-header">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-video"></i>
+                </div>
+                <h2>作品影片</h2>
+            </div>
+            <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-sm);">
+                <iframe
+                    src="https://www.youtube.com/embed/BPzU9uHhfms?si=DROphw0aFzDuZlxv"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                    style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;">
+                </iframe>
+            </div>
+        </section>
         
         <!-- 1. 社群媒體現況介紹 (圖文並茂) -->
         <section class="card">
