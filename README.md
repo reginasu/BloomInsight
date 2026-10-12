@@ -3,8 +3,6 @@
 > **Precision Insights. Blooming Performance.**
 > 社群廣告成效診斷與預算最佳化專案（Power BI / DAX）
 
-線上瀏覽：https://www.youtube.com/watch?v=BPzU9uHhfms
-
 ---
 
 ## 專案簡介
@@ -22,6 +20,15 @@
 - **預算配置缺乏數據佐證** — 多數行銷決策仍仰賴主觀經驗，缺乏跨受眾與素材維度的動態 ROI 評估模型。
 
 ![數據分析儀表板與成效圖表](https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80)
+
+---
+
+## 影片介紹
+
+[![BloomInsight 專案介紹](https://img.youtube.com/vi/BPzU9uHhfms/maxresdefault.jpg)](https://www.youtube.com/watch?v=BPzU9uHhfms)
+
+▶️ 觀看影片：
+
 
 ---
 
@@ -79,8 +86,8 @@
 
 ## 專案連結
 
-- 線上作品頁：https://www.youtube.com/watch?v=BPzU9uHhfms
-- 作者：reginasu
+- 影片介紹：https://www.youtube.com/watch?v=BPzU9uHhfms
+- 作者：Regina Su.
 
 ---
 
