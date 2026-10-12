@@ -25,9 +25,9 @@
 
 ## 影片介紹
 
-[![BloomInsight 專案介紹](https://img.youtube.com/vi/BPzU9uHhfms/maxresdefault.jpg)](https://www.youtube.com/watch?v=BPzU9uHhfms)
+[![BloomInsight 專案介紹](https://img.youtube.com/vi/BPzU9uHhfms/hqdefault.jpg)](https://www.youtube.com/watch?v=BPzU9uHhfms)
 
-▶️ 觀看影片：
+▶️ 觀看影片：https://www.youtube.com/watch?v=BPzU9uHhfms
 
 
 ---
