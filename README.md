@@ -21,7 +21,7 @@
 - **流量「點擊多、轉換少」** — 廣告文案雖能吸引點擊，但受眾若非精準目標群，將產生大量無效轉換流失。
 - **預算配置缺乏數據佐證** — 多數行銷決策仍仰賴主觀經驗，缺乏跨受眾與素材維度的動態 ROI 評估模型。
 
-![數據分析儀表板與成效圖表](https://www.youtube.com/watch?v=BPzU9uHhfms)
+![數據分析儀表板與成效圖表](https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80)
 
 ---
 
